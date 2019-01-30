@@ -5,8 +5,12 @@ from scrapy.exceptions import DropItem
 
 class FilterNullLinkPipeline(object):
   def process_item(self, item, spider):
-    if all(len(element) is 0 for element in item['link']):
-      raise DropItem("Missing link")
+    if spider.name == 'phimle':
+      if all(len(element) is 0 for element in item['link']):
+        raise DropItem("Missing link")
+    if spider.name == 'phimbo':
+      if all(len(element) is 0 for element in item['episode']['link']):
+        raise DropItem("Missing link")
     return item
 
 class DescriptionProcessorPipeline(object):
