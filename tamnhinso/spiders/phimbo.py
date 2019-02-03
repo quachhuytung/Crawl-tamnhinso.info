@@ -72,7 +72,11 @@ class PhimleSpider(scrapy.Spider):
 
     def get_episode(self, response):
         l = ItemLoader(item=Episode(), response=response)
+<<<<<<< HEAD
         l.add_value('ep_num', response.url, re = r'tap\-(\d+)')
+=======
+        l.add_value('ep_num', response.url, re = r'\-(\d+)')
+>>>>>>> eaf6d477aa6c754c86deb985bc47d456e57e424f
         l.add_value('link', self.get_link(response))
         return dict(l.load_item())
             
@@ -85,4 +89,8 @@ class PhimleSpider(scrapy.Spider):
       
       return dict(l.load_item())
 
+<<<<<<< HEAD
   
+=======
+  
+>>>>>>> eaf6d477aa6c754c86deb985bc47d456e57e424f
